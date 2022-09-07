@@ -327,7 +327,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
 
 :Blog a rdfs:Class ;
     rdfs:label "Blog" ;
-    rdfs:comment "A blog." ;
+    rdfs:comment """A [blog](https://en.wikipedia.org/wiki/Blog), sometimes known as a "weblog". Note that the individual posts ([[BlogPosting]]s) in a [[Blog]] are often colloqually referred to by the same term.""" ;
     rdfs:subClassOf :CreativeWork .
 
 :BlogPosting a rdfs:Class ;
@@ -1706,7 +1706,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
 
 :LiveBlogPosting a rdfs:Class ;
     rdfs:label "LiveBlogPosting" ;
-    rdfs:comment "A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates." ;
+    rdfs:comment "A [[LiveBlogPosting]] is a [[BlogPosting]] intended to provide a rolling textual coverage of an ongoing event through continuous updates." ;
     rdfs:subClassOf :BlogPosting .
 
 :LoanOrCredit a rdfs:Class ;
@@ -4031,6 +4031,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     rdfs:label "additionalProperty" ;
     :domainIncludes :Place,
         :Product,
+        :MerchantReturnPolicy,
         :QualitativeValue,
         :QuantitativeValue ;
     :rangeIncludes :PropertyValue ;
@@ -4575,7 +4576,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     :domainIncludes :Blog ;
     :rangeIncludes :BlogPosting ;
     :supersededBy :blogPost ;
-    rdfs:comment "The postings that are part of this blog." .
+    rdfs:comment """Indicates a post that is part of a [[Blog]]. Note that historically, what we term a "Blog" was once known as a "weblog", and that what we term a "BlogPosting" is now often colloquially referred to as a "blog".""" .
 
 :boardingGroup a rdf:Property ;
     rdfs:label "boardingGroup" ;
@@ -5126,7 +5127,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
         :TVSeason,
         :TVSeries ;
     :rangeIncludes :Country ;
-    rdfs:comment """The country of origin of something, including products as well as creative  works such as movie and TV content. 
+    rdfs:comment """The country of origin of something, including products as well as creative  works such as movie and TV content.
 
 In the case of TV and movie, this would be the country of the principle offices of the production company or individual responsible for the movie. For other kinds of [[CreativeWork]] it is difficult to provide fully general guidance, and properties such as [[contentLocation]] and [[locationCreated]] may be more applicable.
 
@@ -5710,7 +5711,8 @@ This property should not be used where the nature of the alignment can be descri
         :CreativeWorkSeries,
         :DatedMoneySpecification,
         :Event,
-        :Role ;
+        :Role,
+        :MerchantReturnPolicySeasonalOverride ;
     :rangeIncludes :Date,
         :DateTime ;
     rdfs:comment "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601))." .
@@ -5719,7 +5721,7 @@ This property should not be used where the nature of the alignment can be descri
     rdfs:label "endTime" ;
     :domainIncludes :Action,
         :FoodEstablishmentReservation,
-        :MediaObject ;
+        :MediaObject, :InteractionCounter  ;
     :rangeIncludes :DateTime,
         :Time ;
     rdfs:comment "The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*. For media, including audio and video, it's the time offset of the end of a clip within a larger file.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions." .
@@ -6600,9 +6602,10 @@ Typical unit code(s): MTK for square meter, FTK for square foot, or YDK for squa
     rdfs:label "itemCondition" ;
     :domainIncludes :Demand,
         :Offer,
-        :Product ;
+        :Product,
+        :MerchantReturnPolicy ;
     :rangeIncludes :OfferItemCondition ;
-    rdfs:comment "A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer." .
+    rdfs:comment "A predefined value from OfferItemCondition specifying the condition of the product or service, or the products or services included in the offer. Also used for product return policies to specify the condition of products accepted for returns." .
 
 :itemListElement a rdf:Property ;
     rdfs:label "itemListElement" ;
@@ -8710,7 +8713,8 @@ we define a supporting type, [[SpeakableSpecification]]  which is defined to be 
         :CreativeWorkSeries,
         :DatedMoneySpecification,
         :Event,
-        :Role ;
+        :Role,
+        :MerchantReturnPolicySeasonalOverride ;
     :rangeIncludes :Date,
         :DateTime ;
     rdfs:comment "The start date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601))." .
@@ -8719,7 +8723,7 @@ we define a supporting type, [[SpeakableSpecification]]  which is defined to be 
     rdfs:label "startTime" ;
     :domainIncludes :Action,
         :FoodEstablishmentReservation,
-        :MediaObject ;
+        :MediaObject, :InteractionCounter ;
     :rangeIncludes :DateTime,
         :Time ;
     rdfs:comment "The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions." .
@@ -10450,7 +10454,7 @@ Open-ended date ranges can be written with ".." in place of the end date. For ex
     rdfs:label "location" ;
     :domainIncludes :Action,
         :Event,
-        :Organization ;
+        :Organization, :InteractionCounter ;
     :rangeIncludes :Place,
         :PostalAddress,
         :Text ;
