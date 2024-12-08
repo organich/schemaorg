@@ -29,14 +29,14 @@ GEM
       json-ld (~> 3.1)
       rdf (~> 3.1)
     link_header (0.0.8)
-    mini_portile2 (2.6.1)
+    mini_portile2 (2.8.8)
     multi_json (1.15.0)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.15.7)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogumbo (2.0.4)
       nokogiri (~> 1.8, >= 1.8.4)
-    racc (1.5.2)
+    racc (1.8.1)
     rack (2.2.3)
     rake (13.0.3)
     rdf (3.1.13)
@@ -96,7 +96,7 @@ DEPENDENCIES
   equivalent-xml
   json-ld
   json-ld-preloaded
-  nokogiri
+  nokogiri (>= 1.15.7)
   nokogumbo
   rake
   rdf-microdata
@@ -106,4 +106,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   2.2.3
+   2.1.4
